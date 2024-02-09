@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick And Morty API</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="bg-slate-200 font-nunito-sans">
+    <nav class="bg-blue-800">
+        <div class="w-[90%] mx-auto flex justify-between py-8">
+            <h1 class="text-lg text-white font-bold sm:text-2xl">RICK AND MORTY</h1>
+            <!-- <div class="flex justify-between gap-3 items-center">
+                <p class="text-white text-sm sm:text-lg">Dark Mode</p>
+                <input type="checkbox" class="peer hidden" data-id="switch-theme" id="switch">
+                <label for="switch" class="w-10 sm:w-14 h-5 sm:h-7 bg-slate-400 rounded-full cursor-pointer flex flex-row-reverse
+                peer-checked:bg-gradient-to-r from-blue-300 to-blue-500 peer-checked:[--transform-circle:-100%] peer-checked:[--bg-circle:hsl(228,28%,20%)]">
+                    <div class="bg-[var(--bg-circle,white)] w-1/2 rounded-full aspect-square translate-x-[var(--transform-circle)] transition-transform"></div>
+                </label>
+            </div> -->
+        </div>
+    </nav>
+
+    <header class="w-[90%] py-10 mx-auto space-y-6">
+
+        <h2 class="text-blue-600 font-bold text-2xl sm:text-4xl md:text-6xl">Bienvenido a la wiki de Rick And Morty</h2>
+        <p class="text-blue-900 sm:text-lg md:text-xl" id="desc">En esta wiki vas a poder ser capaz de encontrar información sobre tu personaje, localización o episodio favorito de la serie Rick and Morty.</p>
+        
+        <!-- searchbar -->
+        <form action="" class="bg-white rounded-xl shadow-lg w-full max-w-96 flex items-center gap-4 py-4 px-7 justify-center">
+            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Realizar busqueda..." class="w-full outline-none text-blue-950" id="searchBar">
+        </form>
+
+        <!-- dropdowns -->
+        <section class="grid grid-cols-[repeat(auto-fill,minmax(192px,1fr))] gap-4">
+            <div class="w-full  relative">
+                <div class="dropdown" id="dropdown" name="gender">
+                    <p class="font-semibold">Filtrar por genero</p>
+                    <button class="flex items-center justify-center">
+                        <i class='bx bxs-chevron-down'></i>
+                    </button>
+                </div>
+
+                <div class="absolute z-30 top-16 inset-x-0 rounded-lg text-gray-400 bg-white overflow-hidden hidden" id="drop">
+                    <p class="px-3 py-4 bg-white hover:bg-blue-500 hover:text-white">Ninguno</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Male</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Female</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Unknown</p>
+                </div>
+            </div>
+
+            <div class="w-full  relative">
+                <div class="dropdown" id="dropdown" name="species">
+                    <p class="font-semibold">Filtrar por especie</p>
+                    <button class="flex items-center justify-center">
+                        <i class='bx bxs-chevron-down'></i>
+                    </button>
+                </div>
+
+                <div class="absolute z-30 top-16 inset-x-0 rounded-lg text-gray-400 bg-white overflow-hidden hidden" id="drop">
+                    <p class="px-3 py-4 bg-white hover:bg-blue-500 hover:text-white">Ninguno</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Human</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Alien</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Humanoid</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Mythological Creature</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Unknown</p>
+                </div>
+            </div>
+
+            <div class="w-full  relative">
+                <div class="dropdown" id="dropdown" name="status">
+                    <p class="font-semibold">Filtrar por estado</p>
+                    <button class="flex items-center justify-center">
+                        <i class='bx bxs-chevron-down'></i>
+                    </button>
+                </div>
+
+                <div class="absolute z-30 top-16 inset-x-0 rounded-lg text-gray-400 bg-white overflow-hidden hidden" id="drop">
+                    <p class="px-3 py-4 bg-white hover:bg-blue-500 hover:text-white">Ninguno</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Alive</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Dead</p>
+                    <p class="px-3 py-4 border-t-2 border-gray-100 hover:bg-blue-500 hover:text-white">Unknown</p>
+                </div>
+            </div>
+
+        </section>
+            
+        <!-- fin dropdowns -->
+
+        <p class="text-blue-700 font-bold text-lg md:text-xl lg:text-2xl">Resultados de busqueda: <span class="text-black font-semibold text-base md:text-lg" id="numberResults"></span></p>
+        <p class="text-blue-700 font-bold text-lg md:text-xl lg:text-2xl">N° Paginas:  <span class="text-black font-semibold text-base md:text-lg" id="numberPages"></span></p>
+    </header>
+
+    <main class="relative z-10">
+        <!-- section cards -->
+        <section class="w-4/5 md:w-[90%] mx-auto grid items-center justify-items-center auto-cols-fr gap-6 lg:grid-cols-2" id="sectionCard">
+            
+        </section>
+
+        <section class="w-[90%] mx-auto py-10">
+            <!-- pagination -->
+            <div class="flex justify-center items-center gap-4 bg-white w-100% max-w-max mx-auto py-3 px-4 rounded-md shadow-lg">
+                
+                <a href="#desc" class="btn-fast-change btn-disabled" id="startBtn">
+                    <i class='bx bx-chevrons-left'></i>
+                </a>
+                <a href="#desc" class="btn-fast-change btn-disabled prevNext" id="previous">
+                    <i class='bx bxs-chevron-left' ></i>
+                </a>
+
+                <div class="font-medium text-md grid grid-flow-col auto-cols-[1fr] justify-items-center items-center gap-2 text-blue-600 h-full" id="paginator">
+                    <!-- <a href="#" class="link-page active-page">1</a>
+                    <a href="#" class="link-page">2</a>
+                    <a href="#" class="link-page">3</a> -->
+                </div>
+
+                <a href="#desc" class="btn-fast-change prevNext" id="next">
+                    <i class='bx bx-chevron-right'></i>
+                </a>
+                <a href="#desc" class="btn-fast-change" id="endBtn">
+                    <i class='bx bxs-chevrons-right'></i>
+                </a>
+                
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>

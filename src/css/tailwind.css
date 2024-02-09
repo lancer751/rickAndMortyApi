@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+    .dropdown{
+        @apply bg-white w-full flex justify-between items-center p-4 rounded-lg gap-3 text-gray-400;
+    }
+
+    /* cards */
+    .card-description{
+        @apply grid grid-rows-[300px,max-content] sm:grid-rows-[max-content] sm:grid-cols-[1fr,1.5fr]  overflow-hidden max-w-[600px] h-full w-full rounded-lg shadow-lg bg-white;
+    }
+
+    .btn-fast-change{
+        @apply bg-slate-300 flex items-center justify-center w-8 h-8 rounded-md hover:bg-blue-600 hover:text-white transition-colors;
+    }
+
+    .link-page{
+        @apply flex items-center justify-center cursor-pointer text-center hover:bg-blue-600 hover:text-white rounded-full transition-colors w-9 h-9;
+    }
+}
+
+@layer utilities{
+    .active-page{
+        @apply bg-blue-600 text-white;
+    }
+
+    .btn-disabled{
+        @apply opacity-70 pointer-events-none bg-slate-200;
+    }    
+}
